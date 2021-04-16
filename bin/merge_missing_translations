@@ -20,11 +20,11 @@ def flatten_hash(hash, keys=[], result = {})
 end
 
 if File.exists?("config/missing_translations.yml")
-  master_language = YAML.load_file("config/locales/nl.yml")
+  master_language = YAML.load_file("config/locales/it.yml")
   
   if ARGV[0] and ARGV[0].strip == "--unused"
     missing_translations = YAML.load_file("config/missing_translations.yml")
-    unused_translations = YAML.load_file("config/nl.unused.yml")
+    unused_translations = YAML.load_file("config/it.unused.yml")
     flat_missing_translations = flatten_hash(missing_translations)
     flat_unused_translations = flatten_hash(unused_translations)
 
@@ -69,14 +69,14 @@ if File.exists?("config/missing_translations.yml")
   result_string = ""
   missing_translations.ya2yaml.each_line { |l| result_string += (l.rstrip + "\n") }
 
-  f = File.open("config/locales/nl.yml", "w")
+  f = File.open("config/locales/it.yml", "w")
   f.write(result_string)
   f.close
 
   f = File.open("config/missing_translations.yml", "w")
   f.close
 
-  puts "Merged missing_translations.yml into nl.yml"
+  puts "Merged missing_translations.yml into it.yml"
 else
   puts "No missing translations"
 end
