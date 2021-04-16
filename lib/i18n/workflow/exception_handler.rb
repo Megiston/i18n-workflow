@@ -25,7 +25,7 @@ module I18n
 
           locale = keys.shift
           last_key = keys.pop
-          keys = [locale] + keys.map { |s| "#{s}_scope".to_sym } + [last_key]
+          keys = [locale] + keys.map { |s| "#{s}".to_sym } + [last_key]
 
           unless keys.length == 2 and keys.last.nil?
             missing_translations << keys
